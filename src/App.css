@@ -37,6 +37,9 @@ nav{
   padding-left: 20px;
 }
 .container-nav{
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
   background-color: #68410b;
 }
 .nav-bar-menu-container{

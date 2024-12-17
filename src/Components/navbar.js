@@ -15,35 +15,43 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
+import { Link } from 'react-scroll';
 
 const Navbar = () =>{
     const [openMenu, setOpenMenu] = useState(false);
     const menuOptions = [
         {
-            text: 'Home', 
-            icon: <HomeIcon />
+            text: 'Home',
+            icon: <HomeIcon />,
+            to: 'home'
         },
         {
             text: 'Sobre Nós',
-            icon: <InfoIcon />
+            icon: <InfoIcon />,
+            to: 'about'
         },
         {
             text: 'Nosso Trabalho',
-            icon: <HomeWorkIcon />
+            icon: <HomeWorkIcon />,
+            to: 'work'
         },
         {
             text: 'Avaliação',
-            icon: <CommentRoundedIcon />
+            icon: <CommentRoundedIcon />,
+            to: 'testemonial'
         },
         {
             text: 'Contato',
-            icon: <PhoneRoundedIcon />
+            icon: <PhoneRoundedIcon />,
+            to: 'contact'
         },
         {
             text: 'Cart',
-            icon: <ShoppingCartRoundedIcon />
+            icon: <ShoppingCartRoundedIcon />,
+            to: '' // Deixe vazio ou ajuste se precisar
         }
-    ]
+    ];
+    
     return(
         <div className="container-nav">
             <nav>
@@ -51,15 +59,21 @@ const Navbar = () =>{
                     <img src={Logo} alt="Logo padaria"></img>
                 </div>
                 <div className='navbar-links-container'>
-                    <a href="">Home</a>
-                    <a href=''>Sobre Nós</a>
-                    <a href=''>Nosso Trabalho</a>
-                    <a href=''>Avaliação</a>
-                    <a href=''>Contato</a>
-                    <a href=''>
-                        <BsCart2 className="navbar-cart-icon" />
-                    </a>
-                    <button className='primary-button'>Reservas Agora</button>
+                    <Link to="home" smooth={true} duration={600}>
+                        <a href="">Home</a>
+                    </Link>
+                    <Link to="about" smooth={true} duration={600}>
+                        <a href=''>Sobre Nós</a>
+                    </Link>
+                    <Link to="work" smooth={true} duration={600}>
+                        <a href=''>Nosso Trabalho</a>
+                    </Link>
+                    <Link to="testemonial" smooth={true} duration={600}>
+                        <a href=''>Avaliação</a>
+                    </Link>
+                    <Link to="contact" smooth={true} duration={600}>
+                        <a href=''>Contato</a>
+                    </Link>
                 </div>
                 <div className='nav-bar-menu-container'>
                     <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
@@ -72,13 +86,20 @@ const Navbar = () =>{
                     onKeyDown={() => setOpenMenu(true)}>
                         <List>
                             {menuOptions.map((item) => (
-                            <ListItem key={item.text} disablePadding>
+                                <ListItem key={item.text} disablePadding>
+                                <Link
+                                    to={item.to}
+                                    smooth={true}
+                                    duration={600}
+                                    onClick={() => setOpenMenu(false)} // Fecha o menu após o clique
+                                >
                                 <ListItemButton>
                                     <ListItemIcon>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.text} sx={{ color: '#000' }} />
                                 </ListItemButton>
-                            </ListItem>
-                            ))}
+                                </Link>
+                                </ListItem>
+                                ))}
                         </List>
                     </Box>
                 </Drawer>

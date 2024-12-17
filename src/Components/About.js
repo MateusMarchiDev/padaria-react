@@ -3,7 +3,7 @@ import AboutImage from "../Assets/about-image.png"
 
 const About = () =>{
     return (
-        <div className="about-section-container">
+        <div id="about" className="about-section-container">
             <div className="about-background-image-container">
                 <img src={AboutBackground} alt="imagem de donuts empilhados" />
             </div>
