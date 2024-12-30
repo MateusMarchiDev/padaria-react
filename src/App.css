@@ -425,6 +425,9 @@ nav{
     padding: 0.5rem 1rem !important;
     margin-bottom: 0.8rem !important;
   }
+  .container-footer{
+    width: 100vw;
+  }
   .footer-wrapper{
     flex-direction: column;
     align-items: center;
@@ -437,7 +440,7 @@ nav{
     margin: 1rem 0;
   }
   .App{
-    max-width: 95vw;
+    max-width: 100vw;
   }
 }
 @media(max-width: 800px){
